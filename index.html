@@ -35,6 +35,9 @@
         <option value="park">Parks</option>
         <option value="hotel">Hotels</option>
         <option value="general">General</option>
+        <option value="shopping">Shopping</option>
+        <option value="market">Markets</option>
+        <option value="entertainment">Entertainment</option>
     </select>
     <button onclick="toggleView()">Toggle List/Map View</button>
     <button onclick="zoomToCurrentLocation()">Zoom to Current Location</button>
@@ -94,8 +97,26 @@
                 hotel: 'blue',
                 restaurant: 'red',
                 museum: 'purple',
-                general: 'orange'
+                general: 'orange',
+                shopping: 'pink',
+                market: 'yellow',
+                entertainment: 'cyan'
             };
+
+            // Function to create colored markers
+            function createColoredMarker(color) {
+                const svgIcon = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="${color}">
+                        <path d="M16 0C10.477 0 6 4.477 6 10c0 4.923 4.685 11.33 9.004 17.694.36.541.97.878 1.635.879.667.001 1.277-.337 1.637-.88C21.316 21.33 26 14.923 26 10c0-5.523-4.477-10-10-10zm0 15a5 5 0 110-10 5 5 0 010 10z"/>
+                    </svg>`;
+                return L.divIcon({
+                    html: svgIcon,
+                    className: '',
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 32],
+                    popupAnchor: [0, -32]
+                });
+            }
 
             // Fetch POIs from external JSON file
             fetch('pois.json')
