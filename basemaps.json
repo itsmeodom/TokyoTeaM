@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Jawg Streets",
+        "url": "https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token={accessToken}",
+        "attribution": "<a href=\"https://jawg.io\" title=\"Tiles Courtesy of Jawg Maps\" target=\"_blank\">&copy; <b>Jawg</b>Maps</a> &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+        "minZoom": 0,
+        "maxZoom": 22
+    },
+    {
+        "name": "Jawg Dark",
+        "url": "https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token={accessToken}",
+        "attribution": "<a href=\"https://jawg.io\" title=\"Tiles Courtesy of Jawg Maps\" target=\"_blank\">&copy; <b>Jawg</b>Maps</a> &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+        "minZoom": 0,
+        "maxZoom": 22
+    },
+    {
+        "name": "Jawg Terrain",
+        "url": "https://tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}",
+        "attribution": "<a href=\"https://jawg.io\" title=\"Tiles Courtesy of Jawg Maps\" target=\"_blank\">&copy; <b>Jawg</b>Maps</a> &copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+        "minZoom": 0,
+        "maxZoom": 22
+    }
+]
