@@ -52,5 +52,68 @@
         "notes": "A Shinto shrine dedicated to the deified spirits of Emperor Meiji and his wife, Empress Shoken.", 
         "link": "https://www.meijijingu.or.jp/en/",
         "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6764,139.6993"
+    },
+    {
+        "name": "UNIQLO Ginza",
+        "type": "shopping",
+        "lat": 35.6704,
+        "lng": 139.7653,
+        "notes": "One of the largest UNIQLO stores in the world, offering a wide range of clothing.",
+        "link": "https://www.uniqlo.com/jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6704,139.7653"
+    },
+    {
+        "name": "Tsukiji Fish Market",
+        "type": "market",
+        "lat": 35.6655,
+        "lng": 139.7708,
+        "notes": "A large wholesale market for fish, fruits, and vegetables in central Tokyo.",
+        "link": "https://www.tsukiji.or.jp/english/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6655,139.7708"
+    },
+    {
+        "name": "Toyosu Fish Market",
+        "type": "market",
+        "lat": 35.6492,
+        "lng": 139.7918,
+        "notes": "The new location for the relocated Tsukiji fish market.",
+        "link": "https://www.toyosushijou.or.jp/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6492,139.7918"
+    },
+    {
+        "name": "Shibuya Crossing",
+        "type": "general",
+        "lat": 35.6580,
+        "lng": 139.7016,
+        "notes": "A popular scramble crossing in Shibuya, Tokyo, known for its bustling activity.",
+        "link": "https://www.japan.travel/en/spot/2231/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6580,139.7016"
+    },
+    {
+        "name": "Pokemon Center Tokyo DX",
+        "type": "shopping",
+        "lat": 35.6784,
+        "lng": 139.7655,
+        "notes": "A large store featuring a wide range of Pokémon merchandise.",
+        "link": "https://www.pokemoncenter-online.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6784,139.7655"
+    },
+    {
+        "name": "Pachinko Parlor",
+        "type": "entertainment",
+        "lat": 35.6895,
+        "lng": 139.6917,
+        "notes": "A popular arcade game venue in Japan offering pachinko and other games.",
+        "link": "https://www.japan-guide.com/e/e2071.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6895,139.6917"
+    },
+    {
+        "name": "TeamLab Borderless",
+        "type": "museum",
+        "lat": 35.6272,
+        "lng": 139.7766,
+        "notes": "A digital art museum located in Odaiba, Tokyo.",
+        "link": "https://borderless.teamlab.art/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6272,139.7766"
     }
 ]
