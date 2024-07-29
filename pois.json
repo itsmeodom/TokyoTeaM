@@ -1,0 +1,56 @@
+[
+    { 
+        "name": "Disney Sea", 
+        "type": "park", 
+        "lat": 35.6267, 
+        "lng": 139.8835, 
+        "notes": "A theme park at the Tokyo Disney Resort located in Urayasu, Chiba, Japan.", 
+        "link": "https://www.tokyodisneyresort.jp/en/tds/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6267,139.8835"
+    },
+    { 
+        "name": "Sotetsu Fresa Inn Tokyo - Roppongi", 
+        "type": "hotel", 
+        "lat": 35.6633, 
+        "lng": 139.7310, 
+        "notes": "A modern hotel located in the heart of Tokyo's vibrant Roppongi district.", 
+        "link": "https://sotetsu-hotels.com/en/fresa-inn/roppongi/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6633,139.7310"
+    },
+    { 
+        "name": "Grand Hyatt Tokyo", 
+        "type": "hotel", 
+        "lat": 35.6595, 
+        "lng": 139.7291, 
+        "notes": "A luxury hotel located in the Roppongi district, known for its exceptional service and amenities.", 
+        "link": "https://www.hyatt.com/en-US/hotel/japan/grand-hyatt-tokyo/tyogh",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6595,139.7291"
+    },
+    { 
+        "name": "Tokyo Tower", 
+        "type": "general", 
+        "lat": 35.6586, 
+        "lng": 139.7454, 
+        "notes": "A communications and observation tower in the Shiba-koen district of Minato, Tokyo, Japan.", 
+        "link": "https://www.tokyotower.co.jp/en.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6586,139.7454"
+    },
+    { 
+        "name": "Senso-ji", 
+        "type": "general", 
+        "lat": 35.7148, 
+        "lng": 139.7967, 
+        "notes": "An ancient Buddhist temple located in Asakusa, Tokyo, Japan.", 
+        "link": "https://www.senso-ji.jp/about/index_e.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7148,139.7967"
+    },
+    { 
+        "name": "Meiji Shrine", 
+        "type": "general", 
+        "lat": 35.6764, 
+        "lng": 139.6993, 
+        "notes": "A Shinto shrine dedicated to the deified spirits of Emperor Meiji and his wife, Empress Shoken.", 
+        "link": "https://www.meijijingu.or.jp/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6764,139.6993"
+    }
+]
