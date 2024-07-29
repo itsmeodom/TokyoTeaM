@@ -45,51 +45,6 @@
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-    const accessToken = '<your accessToken>'; // Replace with your Jawg access token
-
-    var Jawg_Streets = L.tileLayer('https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=' + accessToken, {
-        attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 0,
-        maxZoom: 22,
-    });
-
-    var Jawg_Dark = L.tileLayer('https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=' + accessToken, {
-        attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 0,
-        maxZoom: 22,
-    });
-
-    var Jawg_Terrain = L.tileLayer('https://tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token=' + accessToken, {
-        attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        minZoom: 0,
-        maxZoom: 22,
-    });
-
-    let mapView = true; // Start with map view
-
-    // Initialize the map
-    const map = L.map('map').setView([35.6762, 139.6503], 13); // Centered on Tokyo, Japan
-
-    // Add default basemap
-    Jawg_Streets.addTo(map);
-
-    const baseMaps = {
-        "Jawg Streets": Jawg_Streets,
-        "Jawg Dark": Jawg_Dark,
-        "Jawg Terrain": Jawg_Terrain
-    };
-
-    L.control.layers(baseMaps).addTo(map);
-
-    // Define colors for different POI types
-    const colors = {
-        park: 'green',
-        hotel: 'blue',
-        restaurant: 'red',
-        museum: 'purple',
-        general: 'orange'
-    };
-
     // Function to create colored markers
     function createColoredMarker(color) {
         const svgIcon = `
@@ -105,97 +60,135 @@
         });
     }
 
-    // Fetch POIs from external JSON file
-    fetch('pois.json')
+    // Load configuration and initialize the map
+    fetch('config.json')
         .then(response => response.json())
-        .then(pois => {
-            // Add markers to the map
-            const markers = [];
-            pois.forEach(poi => {
-                const popupContent = `
-                    <b>${poi.name}</b><br>
-                    ${poi.notes}<br>
-                    <a href="${poi.link}" target="_blank">More info</a><br>
-                    <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
-                `;
-                const marker = L.marker([poi.lat, poi.lng], { icon: createColoredMarker(colors[poi.type]) }).bindPopup(popupContent);
-                markers.push(marker);
-                marker.addTo(map);
-            });
+        .then(config => {
+            const accessToken = config.accessToken;
 
-            // Display POIs as a list
-            const poiList = document.getElementById('poi-list');
-            pois.forEach(poi => {
-                const listItem = document.createElement('li');
-                listItem.className = 'poi-item';
-                listItem.innerHTML = `
-                    <b>${poi.name}</b><br>
-                    ${poi.notes}<br>
-                    <a href="${poi.link}" target="_blank">More info</a><br>
-                    <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
-                `;
-                poiList.appendChild(listItem);
-            });
+            // Initialize the map
+            const map = L.map('map').setView([35.6762, 139.6503], 13); // Centered on Tokyo, Japan
 
-            // Filter POIs
-            document.getElementById('filter').addEventListener('change', () => updateMapAndList(pois, markers));
-            document.getElementById('search').addEventListener('input', () => updateMapAndList(pois, markers));
-            map.on('moveend', () => updateMapAndList(pois, markers));
+            // Fetch and add basemaps from external JSON file
+            fetch('basemaps.json')
+                .then(response => response.json())
+                .then(basemaps => {
+                    const baseMaps = {};
+                    basemaps.forEach(basemap => {
+                        const layer = L.tileLayer(basemap.url.replace('{accessToken}', accessToken), {
+                            attribution: basemap.attribution,
+                            minZoom: basemap.minZoom,
+                            maxZoom: basemap.maxZoom
+                        });
+                        baseMaps[basemap.name] = layer;
+                        if (basemap.name === "Jawg Streets") {
+                            layer.addTo(map); // Add default basemap
+                        }
+                    });
+                    L.control.layers(baseMaps).addTo(map);
+                });
 
-            // Initial update
-            updateMapAndList(pois, markers);
-        });
+            // Define colors for different POI types
+            const colors = {
+                park: 'green',
+                hotel: 'blue',
+                restaurant: 'red',
+                museum: 'purple',
+                general: 'orange'
+            };
 
-    // Toggle between map and list view
-    function toggleView() {
-        mapView = !mapView;
-        document.getElementById('map').style.display = mapView ? 'block' : 'none';
-        document.getElementById('poi-list').style.display = mapView ? 'none' : 'block';
-    }
+            // Fetch POIs from external JSON file
+            fetch('pois.json')
+                .then(response => response.json())
+                .then(pois => {
+                    // Add markers to the map
+                    const markers = [];
+                    pois.forEach(poi => {
+                        const popupContent = `
+                            <b>${poi.name}</b><br>
+                            ${poi.notes}<br>
+                            <a href="${poi.link}" target="_blank">More info</a><br>
+                            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
+                        `;
+                        const marker = L.marker([poi.lat, poi.lng], { icon: createColoredMarker(colors[poi.type]) }).bindPopup(popupContent);
+                        markers.push(marker);
+                        marker.addTo(map);
+                    });
 
-    // Zoom to current location
-    function zoomToCurrentLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                const { latitude, longitude } = position.coords;
-                map.setView([latitude, longitude], 13);
-            }, () => {
-                alert('Geolocation is not supported by this browser.');
-            });
-        } else {
-            alert('Geolocation is not supported by this browser.');
-        }
-    }
+                    // Display POIs as a list
+                    const poiList = document.getElementById('poi-list');
+                    pois.forEach(poi => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'poi-item';
+                        listItem.innerHTML = `
+                            <b>${poi.name}</b><br>
+                            ${poi.notes}<br>
+                            <a href="${poi.link}" target="_blank">More info</a><br>
+                            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
+                        `;
+                        poiList.appendChild(listItem);
+                    });
 
-    // Update POI list and markers based on filter, search, and map bounds
-    function updateMapAndList(pois, markers) {
-        const filterValue = document.getElementById('filter').value;
-        const searchValue = document.getElementById('search').value.toLowerCase();
-        const bounds = map.getBounds();
-        const poiList = document.getElementById('poi-list');
-        poiList.innerHTML = '';
+                    // Filter POIs
+                    document.getElementById('filter').addEventListener('change', () => updateMapAndList(pois, markers));
+                    document.getElementById('search').addEventListener('input', () => updateMapAndList(pois, markers));
+                    map.on('moveend', () => updateMapAndList(pois, markers));
 
-        markers.forEach(marker => marker.remove());
+                    // Initial update
+                    updateMapAndList(pois, markers);
+                });
 
-        pois.forEach((poi, index) => {
-            const isInBounds = bounds.contains([poi.lat, poi.lng]);
-            const matchesFilter = filterValue === 'all' || poi.type === filterValue;
-            const matchesSearch = poi.name.toLowerCase().includes(searchValue);
+            // Toggle between map and list view
+            function toggleView() {
+                mapView = !mapView;
+                document.getElementById('map').style.display = mapView ? 'block' : 'none';
+                document.getElementById('poi-list').style.display = mapView ? 'none' : 'block';
+            }
 
-            if (isInBounds && matchesFilter && matchesSearch) {
-                markers[index].addTo(map);
-                const listItem = document.createElement('li');
-                listItem.className = 'poi-item';
-                listItem.innerHTML = `
-                    <b>${poi.name}</b><br>
-                    ${poi.notes}<br>
-                    <a href="${poi.link}" target="_blank">More info</a><br>
-                    <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
-                `;
-                poiList.appendChild(listItem);
+            // Zoom to current location
+            function zoomToCurrentLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(position => {
+                        const { latitude, longitude } = position.coords;
+                        map.setView([latitude, longitude], 13);
+                    }, () => {
+                        alert('Geolocation is not supported by this browser.');
+                    });
+                } else {
+                    alert('Geolocation is not supported by this browser.');
+                }
+            }
+
+            // Update POI list and markers based on filter, search, and map bounds
+            function updateMapAndList(pois, markers) {
+                const filterValue = document.getElementById('filter').value;
+                const searchValue = document.getElementById('search').value.toLowerCase();
+                const bounds = map.getBounds();
+                const poiList = document.getElementById('poi-list');
+                poiList.innerHTML = '';
+
+                markers.forEach(marker => marker.remove());
+
+                pois.forEach((poi, index) => {
+                    const isInBounds = bounds.contains([poi.lat, poi.lng]);
+                    const matchesFilter = filterValue === 'all' || poi.type === filterValue;
+                    const matchesSearch = poi.name.toLowerCase().includes(searchValue);
+
+                    if (isInBounds && matchesFilter && matchesSearch) {
+                        markers[index].addTo(map);
+                        const listItem = document.createElement('li');
+                        listItem.className = 'poi-item';
+                        listItem.innerHTML = `
+                            <b>${poi.name}</b><br>
+                            ${poi.notes}<br>
+                            <a href="${poi.link}" target="_blank">More info</a><br>
+                            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
+                        `;
+                        poiList.appendChild(listItem);
+                    }
+                });
             }
         });
-    }
 </script>
 
 </body>
