@@ -45,7 +45,7 @@
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
-    const accessToken = 'Q2FWCtOdX5YkdhlehZTlH7iCYdLKnJ5o112ZS8cjNFzCbv57vYvPv9S6maj4JnRS';
+    const accessToken = '<your accessToken>'; // Replace with your Jawg access token
 
     var Jawg_Streets = L.tileLayer('https://tile.jawg.io/jawg-streets/{z}/{x}/{y}{r}.png?access-token=' + accessToken, {
         attribution: '<a href="https://jawg.io" title="Tiles Courtesy of Jawg Maps" target="_blank">&copy; <b>Jawg</b>Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -64,63 +64,6 @@
         minZoom: 0,
         maxZoom: 22,
     });
-
-    const pois = [
-        { 
-            name: "Disney Sea", 
-            type: "park", 
-            lat: 35.6267, 
-            lng: 139.8835, 
-            notes: "A theme park at the Tokyo Disney Resort located in Urayasu, Chiba, Japan.", 
-            link: "https://www.tokyodisneyresort.jp/en/tds/",
-            googleMapsLink: "https://www.google.com/maps/search/?api=1&query=35.6267,139.8835"
-        },
-        { 
-            name: "Sotetsu Fresa Inn Tokyo - Roppongi", 
-            type: "hotel", 
-            lat: 35.6633, 
-            lng: 139.7310, 
-            notes: "A modern hotel located in the heart of Tokyo's vibrant Roppongi district.", 
-            link: "https://sotetsu-hotels.com/en/fresa-inn/roppongi/",
-            googleMapsLink: "https://www.google.com/maps/search/?api=1&query=35.6633,139.7310"
-        },
-        { 
-            name: "Grand Hyatt Tokyo", 
-            type: "hotel", 
-            lat: 35.6595, 
-            lng: 139.7291, 
-            notes: "A luxury hotel located in the Roppongi district, known for its exceptional service and amenities.", 
-            link: "https://www.hyatt.com/en-US/hotel/japan/grand-hyatt-tokyo/tyogh",
-            googleMapsLink: "https://www.google.com/maps/search/?api=1&query=35.6595,139.7291"
-        },
-        { 
-            name: "Tokyo Tower", 
-            type: "general", 
-            lat: 35.6586, 
-            lng: 139.7454, 
-            notes: "A communications and observation tower in the Shiba-koen district of Minato, Tokyo, Japan.", 
-            link: "https://www.tokyotower.co.jp/en.html",
-            googleMapsLink: "https://www.google.com/maps/search/?api=1&query=35.6586,139.7454"
-        },
-        { 
-            name: "Senso-ji", 
-            type: "general", 
-            lat: 35.7148, 
-            lng: 139.7967, 
-            notes: "An ancient Buddhist temple located in Asakusa, Tokyo, Japan.", 
-            link: "https://www.senso-ji.jp/about/index_e.html",
-            googleMapsLink: "https://www.google.com/maps/search/?api=1&query=35.7148,139.7967"
-        },
-        { 
-            name: "Meiji Shrine", 
-            type: "general", 
-            lat: 35.6764, 
-            lng: 139.6993, 
-            notes: "A Shinto shrine dedicated to the deified spirits of Emperor Meiji and his wife, Empress Shoken.", 
-            link: "https://www.meijijingu.or.jp/en/",
-            googleMapsLink: "https://www.google.com/maps/search/?api=1&query=35.6764,139.6993"
-        }
-    ];
 
     let mapView = true; // Start with map view
 
@@ -162,38 +105,46 @@
         });
     }
 
-    // Add markers to the map
-    const markers = [];
-    pois.forEach(poi => {
-        const popupContent = `
-            <b>${poi.name}</b><br>
-            ${poi.notes}<br>
-            <a href="${poi.link}" target="_blank">More info</a><br>
-            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
-        `;
-        const marker = L.marker([poi.lat, poi.lng], { icon: createColoredMarker(colors[poi.type]) }).bindPopup(popupContent);
-        markers.push(marker);
-        marker.addTo(map);
-    });
+    // Fetch POIs from external JSON file
+    fetch('pois.json')
+        .then(response => response.json())
+        .then(pois => {
+            // Add markers to the map
+            const markers = [];
+            pois.forEach(poi => {
+                const popupContent = `
+                    <b>${poi.name}</b><br>
+                    ${poi.notes}<br>
+                    <a href="${poi.link}" target="_blank">More info</a><br>
+                    <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
+                `;
+                const marker = L.marker([poi.lat, poi.lng], { icon: createColoredMarker(colors[poi.type]) }).bindPopup(popupContent);
+                markers.push(marker);
+                marker.addTo(map);
+            });
 
-    // Display POIs as a list
-    const poiList = document.getElementById('poi-list');
-    pois.forEach(poi => {
-        const listItem = document.createElement('li');
-        listItem.className = 'poi-item';
-        listItem.innerHTML = `
-            <b>${poi.name}</b><br>
-            ${poi.notes}<br>
-            <a href="${poi.link}" target="_blank">More info</a><br>
-            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
-        `;
-        poiList.appendChild(listItem);
-    });
+            // Display POIs as a list
+            const poiList = document.getElementById('poi-list');
+            pois.forEach(poi => {
+                const listItem = document.createElement('li');
+                listItem.className = 'poi-item';
+                listItem.innerHTML = `
+                    <b>${poi.name}</b><br>
+                    ${poi.notes}<br>
+                    <a href="${poi.link}" target="_blank">More info</a><br>
+                    <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
+                `;
+                poiList.appendChild(listItem);
+            });
 
-    // Filter POIs
-    document.getElementById('filter').addEventListener('change', updateMapAndList);
-    document.getElementById('search').addEventListener('input', updateMapAndList);
-    map.on('moveend', updateMapAndList);
+            // Filter POIs
+            document.getElementById('filter').addEventListener('change', () => updateMapAndList(pois, markers));
+            document.getElementById('search').addEventListener('input', () => updateMapAndList(pois, markers));
+            map.on('moveend', () => updateMapAndList(pois, markers));
+
+            // Initial update
+            updateMapAndList(pois, markers);
+        });
 
     // Toggle between map and list view
     function toggleView() {
@@ -217,10 +168,11 @@
     }
 
     // Update POI list and markers based on filter, search, and map bounds
-    function updateMapAndList() {
+    function updateMapAndList(pois, markers) {
         const filterValue = document.getElementById('filter').value;
         const searchValue = document.getElementById('search').value.toLowerCase();
         const bounds = map.getBounds();
+        const poiList = document.getElementById('poi-list');
         poiList.innerHTML = '';
 
         markers.forEach(marker => marker.remove());
@@ -244,9 +196,6 @@
             }
         });
     }
-
-    // Initial update
-    updateMapAndList();
 </script>
 
 </body>
