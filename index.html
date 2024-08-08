@@ -102,6 +102,27 @@
                 market: 'yellow',
                 entertainment: 'cyan'
             };
+                        // Toggle between map and list view
+            function toggleView() {
+                mapView = !mapView;
+                document.getElementById('map').style.display = mapView ? 'block' : 'none';
+                document.getElementById('poi-list').style.display = mapView ? 'none' : 'block';
+            }
+
+            // Zoom to current location
+            function zoomToCurrentLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(position => {
+                        const { latitude, longitude } = position.coords;
+                        map.setView([latitude, longitude], 13);
+                    }, () => {
+                        alert('Geolocation is not supported by this browser.');
+                    });
+                } else {
+                    alert('Geolocation is not supported by this browser.');
+                }
+            }
+
 
             // Function to create colored markers
             function createColoredMarker(color) {
@@ -159,26 +180,6 @@
                     updateMapAndList(pois, markers);
                 });
 
-            // Toggle between map and list view
-            function toggleView() {
-                mapView = !mapView;
-                document.getElementById('map').style.display = mapView ? 'block' : 'none';
-                document.getElementById('poi-list').style.display = mapView ? 'none' : 'block';
-            }
-
-            // Zoom to current location
-            function zoomToCurrentLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(position => {
-                        const { latitude, longitude } = position.coords;
-                        map.setView([latitude, longitude], 13);
-                    }, () => {
-                        alert('Geolocation is not supported by this browser.');
-                    });
-                } else {
-                    alert('Geolocation is not supported by this browser.');
-                }
-            }
 
             // Update POI list and markers based on filter, search, and map bounds
             function updateMapAndList(pois, markers) {
