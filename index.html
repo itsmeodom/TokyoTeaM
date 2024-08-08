@@ -7,21 +7,29 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        #map {
-            height: 500px;
+        #container {
+            display: flex;
+            flex-direction: row;
+            height: 80vh;
+            gap: 10px;
         }
-        #poi-list {
-            list-style-type: none;
-            padding: 0;
+        #map, #poi-list {
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+        .fullscreen-map {
+            flex: 0 0 100%;
+        }
+        .fullscreen-list {
+            flex: 0 0 100%;
+        }
+        @media (max-width: 768px) {
+            #container {
+                flex-direction: column;
+            }
         }
         .poi-item {
             margin: 10px 0;
-        }
-        .controls {
-            margin: 20px 0;
-        }
-        .leaflet-control-layers {
-            background-color: white;
         }
     </style>
 </head>
@@ -45,7 +53,7 @@
         </select>
     </div>
     <div class="col-md-4 mb-3">
-        <button onclick="toggleView()" class="btn btn-primary btn-block">Toggle List/Map View</button>
+        <button onclick="toggleSize()" class="btn btn-primary btn-block">Toggle Map/List Size</button>
     </div>
     <div class="col-md-4 mb-3">
         <button onclick="zoomToCurrentLocation()" class="btn btn-secondary btn-block">Zoom to Current Location</button>
@@ -53,17 +61,24 @@
     <div class="col-md-4 mb-3">
         <button onclick="returnToHome()" class="btn btn-info btn-block">Return to Home</button>
     </div>
+    <div class="col-md-4 mb-3">
+        <button onclick="maximizeMap()" class="btn btn-success btn-block">Maximize Map</button>
+    </div>
+    <div class="col-md-4 mb-3">
+        <button onclick="maximizeList()" class="btn btn-warning btn-block">Maximize List</button>
+    </div>
 </div>
 
-<div id="map" class="mb-4"></div>
-<ul id="poi-list" class="list-group" style="display: none;"></ul>
+<div id="container">
+    <div id="map"></div>
+    <ul id="poi-list" class="list-group"></ul>
+</div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     let map;
-    let mapView = true; // Start with map view
     const homeCoords = [35.681160, 139.758157]; // Home coordinates
     const homeZoom = 13; // Home zoom level
 
@@ -94,11 +109,26 @@
         });
     }
 
-    // Global functions
-    function toggleView() {
-        mapView = !mapView;
-        document.getElementById('map').style.display = mapView ? 'block' : 'none';
-        document.getElementById('poi-list').style.display = mapView ? 'none' : 'block';
+    function toggleSize() {
+        const container = document.getElementById('container');
+        if (container.style.flexDirection === 'row') {
+            container.style.flexDirection = 'column';
+        } else {
+            container.style.flexDirection = 'row';
+        }
+        map.invalidateSize(); // Resize the map to fit its container
+    }
+
+    function maximizeMap() {
+        document.getElementById('map').classList.add('fullscreen-map');
+        document.getElementById('poi-list').classList.remove('fullscreen-list');
+        map.invalidateSize(); // Resize the map to fit its container
+    }
+
+    function maximizeList() {
+        document.getElementById('poi-list').classList.add('fullscreen-list');
+        document.getElementById('map').classList.remove('fullscreen-map');
+        map.invalidateSize(); // Resize the map to fit its container
     }
 
     function zoomToCurrentLocation() {
