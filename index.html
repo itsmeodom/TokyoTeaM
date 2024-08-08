@@ -48,6 +48,21 @@
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script>
+    let map;
+    let mapView = true; // Start with map view
+
+    // Define colors for different POI types
+    const colors = {
+        park: 'green',
+        hotel: 'blue',
+        restaurant: 'red',
+        museum: 'purple',
+        general: 'orange',
+        shopping: 'pink',
+        market: 'yellow',
+        entertainment: 'cyan'
+    };
+
     // Function to create colored markers
     function createColoredMarker(color) {
         const svgIcon = `
@@ -62,20 +77,26 @@
             popupAnchor: [0, -32]
         });
     }
-                // Zoom to current location
-            function zoomToCurrentLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(position => {
-                        const { latitude, longitude } = position.coords;
-                        map.setView([latitude, longitude], 13);
-                    }, () => {
-                        alert('Geolocation is not supported by this browser.');
-                    });
-                } else {
-                    alert('Geolocation is not supported by this browser.');
-                }
-            }
 
+    // Global functions
+    function toggleView() {
+        mapView = !mapView;
+        document.getElementById('map').style.display = mapView ? 'block' : 'none';
+        document.getElementById('poi-list').style.display = mapView ? 'none' : 'block';
+    }
+
+    function zoomToCurrentLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                const { latitude, longitude } = position.coords;
+                map.setView([latitude, longitude], 13);
+            }, () => {
+                alert('Geolocation is not supported by this browser.');
+            });
+        } else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    }
 
     // Load configuration and initialize the map
     fetch('config.json')
@@ -84,7 +105,7 @@
             const accessToken = config.accessToken;
 
             // Initialize the map
-            const map = L.map('map').setView([35.6762, 139.6503], 13); // Centered on Tokyo, Japan
+            map = L.map('map').setView([35.6762, 139.6503], 13); // Centered on Tokyo, Japan
 
             // Fetch and add basemaps from external JSON file
             fetch('basemaps.json')
@@ -104,41 +125,6 @@
                     });
                     L.control.layers(baseMaps).addTo(map);
                 });
-
-            // Define colors for different POI types
-            const colors = {
-                park: 'green',
-                hotel: 'blue',
-                restaurant: 'red',
-                museum: 'purple',
-                general: 'orange',
-                shopping: 'pink',
-                market: 'yellow',
-                entertainment: 'cyan'
-            };
-                        // Toggle between map and list view
-            function toggleView() {
-                mapView = !mapView;
-                document.getElementById('map').style.display = mapView ? 'block' : 'none';
-                document.getElementById('poi-list').style.display = mapView ? 'none' : 'block';
-            }
-
-
-
-            // Function to create colored markers
-            function createColoredMarker(color) {
-                const svgIcon = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="${color}">
-                        <path d="M16 0C10.477 0 6 4.477 6 10c0 4.923 4.685 11.33 9.004 17.694.36.541.97.878 1.635.879.667.001 1.277-.337 1.637-.88C21.316 21.33 26 14.923 26 10c0-5.523-4.477-10-10-10zm0 15a5 5 0 110-10 5 5 0 010 10z"/>
-                    </svg>`;
-                return L.divIcon({
-                    html: svgIcon,
-                    className: '',
-                    iconSize: [32, 32],
-                    iconAnchor: [16, 32],
-                    popupAnchor: [0, -32]
-                });
-            }
 
             // Fetch POIs from external JSON file
             fetch('pois.json')
@@ -180,7 +166,6 @@
                     // Initial update
                     updateMapAndList(pois, markers);
                 });
-
 
             // Update POI list and markers based on filter, search, and map bounds
             function updateMapAndList(pois, markers) {
