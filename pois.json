@@ -90,6 +90,965 @@
         "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6580,139.7016"
     },
     {
+        "name": "Hachiko Statue",
+        "type": "general",
+        "lat": 35.6591,
+        "lng": 139.7004,
+        "notes": "A famous statue honoring the loyal dog Hachiko.",
+        "link": "https://www.japan.travel/en/spot/2201/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6591,139.7004"
+    },
+    {
+        "name": "Shibuya 109",
+        "type": "shopping",
+        "lat": 35.6584,
+        "lng": 139.7008,
+        "notes": "Iconic fashion mall catering to young women.",
+        "link": "https://www.shibuya109.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6584,139.7008"
+    },
+    {
+        "name": "Ukaitei",
+        "type": "restaurant",
+        "lat": 35.6672,
+        "lng": 139.7097,
+        "notes": "Known for teppanyaki dining.",
+        "link": "https://www.ukai.co.jp/english/shiba/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6672,139.7097"
+    },
+    {
+        "name": "Kaikaya by the Sea",
+        "type": "restaurant",
+        "lat": 35.6632,
+        "lng": 139.7057,
+        "notes": "Offers creative seafood dishes.",
+        "link": "https://kaikaya.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6632,139.7057"
+    },
+    {
+        "name": "Ichiran Ramen",
+        "type": "restaurant",
+        "lat": 35.6591,
+        "lng": 139.7008,
+        "notes": "Famous for individual dining booths and customizable ramen.",
+        "link": "https://ichiran.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6591,139.7008"
+    },
+    {
+        "name": "Gyukatsu Motomura",
+        "type": "restaurant",
+        "lat": 35.6584,
+        "lng": 139.7008,
+        "notes": "Specializes in deep-fried beef cutlets.",
+        "link": "https://gyukatsu-motomura.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6584,139.7008"
+    },
+    {
+        "name": "Genki Sushi",
+        "type": "restaurant",
+        "lat": 35.6580,
+        "lng": 139.7016,
+        "notes": "Conveyor belt sushi with a digital ordering system.",
+        "link": "https://www.genkisushi.co.jp/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6580,139.7016"
+    },
+    {
+        "name": "Café Habana Tokyo",
+        "type": "restaurant",
+        "lat": 35.6628,
+        "lng": 139.7032,
+        "notes": "Casual eatery offering Cuban sandwiches and corn.",
+        "link": "https://cafehabana.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6628,139.7032"
+    },
+    {
+        "name": "Tokyo Metropolitan Government Building",
+        "type": "general",
+        "lat": 35.6896,
+        "lng": 139
+
+When you add notes for the restaurants, please indicate if it's budget, casual, or expensive
+ChatGPT
+
+Sure, I'll include the price category (budget, casual, or expensive) in the notes for the restaurants. Here's the updated JSON structure with the new POIs and detailed notes:
+
+json
+
+[
+    { 
+        "name": "Disney Sea", 
+        "type": "park", 
+        "lat": 35.6267, 
+        "lng": 139.8835, 
+        "notes": "A theme park at the Tokyo Disney Resort located in Urayasu, Chiba, Japan.", 
+        "link": "https://www.tokyodisneyresort.jp/en/tds/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6267,139.8835"
+    },
+    { 
+        "name": "Sotetsu Fresa Inn Tokyo - Roppongi", 
+        "type": "hotel", 
+        "lat": 35.6633, 
+        "lng": 139.7310, 
+        "notes": "A modern hotel located in the heart of Tokyo's vibrant Roppongi district.", 
+        "link": "https://sotetsu-hotels.com/en/fresa-inn/roppongi/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6633,139.7310"
+    },
+    { 
+        "name": "Grand Hyatt Tokyo", 
+        "type": "hotel", 
+        "lat": 35.6595, 
+        "lng": 139.7291, 
+        "notes": "A luxury hotel located in the Roppongi district, known for its exceptional service and amenities.", 
+        "link": "https://www.hyatt.com/en-US/hotel/japan/grand-hyatt-tokyo/tyogh",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6595,139.7291"
+    },
+    { 
+        "name": "Tokyo Tower", 
+        "type": "general", 
+        "lat": 35.6586, 
+        "lng": 139.7454, 
+        "notes": "A communications and observation tower in the Shiba-koen district of Minato, Tokyo, Japan.", 
+        "link": "https://www.tokyotower.co.jp/en.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6586,139.7454"
+    },
+    { 
+        "name": "Senso-ji", 
+        "type": "general", 
+        "lat": 35.7148, 
+        "lng": 139.7967, 
+        "notes": "An ancient Buddhist temple located in Asakusa, Tokyo, Japan.", 
+        "link": "https://www.senso-ji.jp/about/index_e.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7148,139.7967"
+    },
+    { 
+        "name": "Meiji Shrine", 
+        "type": "general", 
+        "lat": 35.6764, 
+        "lng": 139.6993, 
+        "notes": "A Shinto shrine dedicated to the deified spirits of Emperor Meiji and his wife, Empress Shoken.", 
+        "link": "https://www.meijijingu.or.jp/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6764,139.6993"
+    },
+    {
+        "name": "UNIQLO Ginza",
+        "type": "shopping",
+        "lat": 35.6704,
+        "lng": 139.7653,
+        "notes": "One of the largest UNIQLO stores in the world, offering a wide range of clothing.",
+        "link": "https://www.uniqlo.com/jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6704,139.7653"
+    },
+    {
+        "name": "Tsukiji Fish Market",
+        "type": "market",
+        "lat": 35.6655,
+        "lng": 139.7708,
+        "notes": "A large wholesale market for fish, fruits, and vegetables in central Tokyo.",
+        "link": "https://www.tsukiji.or.jp/english/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6655,139.7708"
+    },
+    {
+        "name": "Toyosu Fish Market",
+        "type": "market",
+        "lat": 35.6492,
+        "lng": 139.7918,
+        "notes": "The new location for the relocated Tsukiji fish market.",
+        "link": "https://www.toyosushijou.or.jp/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6492,139.7918"
+    },
+    {
+        "name": "Shibuya Crossing",
+        "type": "general",
+        "lat": 35.6580,
+        "lng": 139.7016,
+        "notes": "A popular scramble crossing in Shibuya, Tokyo, known for its bustling activity.",
+        "link": "https://www.japan.travel/en/spot/2231/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6580,139.7016"
+    },
+    {
+        "name": "Hachiko Statue",
+        "type": "general",
+        "lat": 35.6591,
+        "lng": 139.7004,
+        "notes": "A famous statue honoring the loyal dog Hachiko.",
+        "link": "https://www.japan.travel/en/spot/2201/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6591,139.7004"
+    },
+    {
+        "name": "Shibuya 109",
+        "type": "shopping",
+        "lat": 35.6584,
+        "lng": 139.7008,
+        "notes": "Iconic fashion mall catering to young women.",
+        "link": "https://www.shibuya109.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6584,139.7008"
+    },
+    {
+        "name": "Ukaitei",
+        "type": "restaurant",
+        "lat": 35.6672,
+        "lng": 139.7097,
+        "notes": "Known for teppanyaki dining. Expensive.",
+        "link": "https://www.ukai.co.jp/english/shiba/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6672,139.7097"
+    },
+    {
+        "name": "Kaikaya by the Sea",
+        "type": "restaurant",
+        "lat": 35.6632,
+        "lng": 139.7057,
+        "notes": "Offers creative seafood dishes. Expensive.",
+        "link": "https://kaikaya.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6632,139.7057"
+    },
+    {
+        "name": "Ichiran Ramen",
+        "type": "restaurant",
+        "lat": 35.6591,
+        "lng": 139.7008,
+        "notes": "Famous for individual dining booths and customizable ramen. Budget.",
+        "link": "https://ichiran.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6591,139.7008"
+    },
+    {
+        "name": "Gyukatsu Motomura",
+        "type": "restaurant",
+        "lat": 35.6584,
+        "lng": 139.7008,
+        "notes": "Specializes in deep-fried beef cutlets. Budget.",
+        "link": "https://gyukatsu-motomura.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6584,139.7008"
+    },
+    {
+        "name": "Genki Sushi",
+        "type": "restaurant",
+        "lat": 35.6580,
+        "lng": 139.7016,
+        "notes": "Conveyor belt sushi with a digital ordering system. Casual.",
+        "link": "https://www.genkisushi.co.jp/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6580,139.7016"
+    },
+    {
+        "name": "Café Habana Tokyo",
+        "type": "restaurant",
+        "lat": 35.6628,
+        "lng": 139.7032,
+        "notes": "Casual eatery offering Cuban sandwiches and corn. Casual.",
+        "link": "https://cafehabana.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6628,139.7032"
+    },
+    {
+        "name": "Tokyo Metropolitan Government Building",
+        "type": "general",
+        "lat": 35.6896,
+        "lng": 139.6917,
+        "notes": "Offers free observation decks with panoramic city views.",
+        "link": "https://www.metro.tokyo.lg.jp/ENGLISH/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6896,139.6917"
+    },
+    {
+        "name": "Golden Gai",
+        "type": "general",
+        "lat": 35.6941,
+        "lng": 139.7021,
+        "notes": "Narrow alleyways with tiny bars, each with its unique theme.",
+        "link": "https://www.japan.travel/en/spot/1480/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6941,139.7021"
+    },
+    {
+        "name": "Kabukicho",
+        "type": "general",
+        "lat": 35.6964,
+        "lng": 139.7022,
+        "notes": "Tokyo's entertainment and red-light district.",
+        "link": "https://www.japan-guide.com/e/e3011.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6964,139.7022"
+    },
+    {
+        "name": "Omoide Yokocho",
+        "type": "general",
+        "lat": 35.6931,
+        "lng": 139.7006,
+        "notes": "Known as “Piss Alley”, a narrow lane filled with tiny eateries.",
+        "link": "https://www.japan-guide.com/e/e3012.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6931,139.7006"
+    },
+    {
+        "name": "Narisawa",
+        "type": "restaurant",
+        "lat": 35.6654,
+        "lng": 139.7172,
+        "notes": "Michelin-starred restaurant with innovative Japanese cuisine. Expensive.",
+        "link": "https://www.narisawa-yoshihiro.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6654,139.7172"
+    },
+    {
+        "name": "Shunju",
+        "type": "restaurant",
+        "lat": 35.6934,
+        "lng": 139.7006,
+        "notes": "Offers seasonal Japanese dishes with a modern twist. Expensive.",
+        "link": "https://www.shunju.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6934,139.7006"
+    },
+    {
+        "name": "Matsuya",
+        "type": "restaurant",
+        "lat": 35.6940,
+        "lng": 139.7006,
+        "notes": "A popular chain for quick and affordable beef bowls. Budget.",
+        "link": "https://www.matsuyafoods.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6940,139.7006"
+    },
+    {
+        "name": "Ichiran Ramen Shinjuku",
+        "type": "restaurant",
+        "lat": 35.6952,
+        "lng": 139.7012,
+        "notes": "Another branch for late-night ramen cravings. Budget.",
+        "link": "https://ichiran.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6952,139.7012"
+    },
+    {
+        "name": "Torikizoku",
+        "type": "restaurant",
+        "lat": 35.6915,
+        "lng": 139.7034,
+        "notes": "Affordable yakitori (grilled chicken skewers) chain. Casual.",
+        "link": "https://www.torikizoku.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6915,139.7034"
+    },
+    {
+        "name": "Sushi Zanmai Shinjuku",
+        "type": "restaurant",
+        "lat": 35.6930,
+        "lng": 139.7030,
+        "notes": "Well-known sushi chain with fresh and reasonably priced sushi. Casual.",
+        "link": "https://www.kiyomura.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6930,139.7030"
+    },
+    {
+        "name": "Senso-ji Temple",
+        "type": "general",
+        "lat": 35.7148,
+        "lng": 139.7967,
+        "notes": "Tokyo’s oldest temple, known for its large red lantern.",
+        "link": "https://www.senso-ji.jp/about/index_e.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7148,139.7967"
+    },
+    {
+        "name": "Nakamise Shopping Street",
+        "type": "shopping",
+        "lat": 35.7142,
+        "lng": 139.7966,
+        "notes": "Lined with shops selling traditional snacks and souvenirs.",
+        "link": "https://www.japan-guide.com/e/e3003.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7142,139.7966"
+    },
+    {
+        "name": "Sumida Aquarium",
+        "type": "general",
+        "lat": 35.7101,
+        "lng": 139.8107,
+        "notes": "Modern aquarium located in the Tokyo Skytree complex.",
+        "link": "https://www.sumida-aquarium.com/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7101,139.8107"
+    },
+    {
+        "name": "Asakusa Imahan",
+        "type": "restaurant",
+        "lat": 35.7119,
+        "lng": 139.7984,
+        "notes": "Famous for high-quality sukiyaki and shabu-shabu. Expensive.",
+        "link": "https://www.asakusaimahan.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7119,139.7984"
+    },
+    {
+        "name": "Yakatabune Funasei",
+        "type": "restaurant",
+        "lat": 35.6380,
+        "lng": 139.7495,
+        "notes": "Enjoy traditional Japanese cuisine on a boat cruise. Expensive.",
+        "link": "https://www.funasei.com/english/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6380,139.7495"
+    },
+    {
+        "name": "Asakusa Kagetsudo",
+        "type": "restaurant",
+        "lat": 35.7121,
+        "lng": 139.7966,
+        "notes": "Known for its giant melon pan (sweet bread). Budget.",
+        "link": "https://www.asakusa-kagetsudo.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7121,139.7966"
+    },
+    {
+        "name": "Daikokuya",
+        "type": "restaurant",
+        "lat": 35.7104,
+        "lng": 139.7967,
+        "notes": "A popular spot for tempura. Budget.",
+        "link": "https://www.tempura.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7104,139.7967"
+    },
+    {
+        "name": "Kamiya Bar",
+        "type": "restaurant",
+        "lat": 35.7101,
+        "lng": 139.7970,
+        "notes": "Tokyo’s oldest Western-style bar, offering beer and snacks. Casual.",
+        "link": "https://www.kamiya-bar.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7101,139.7970"
+    },
+    {
+        "name": "Namiki Yabusoba",
+        "type": "restaurant",
+        "lat": 35.7102,
+        "lng": 139.7974,
+        "notes": "Traditional soba noodle restaurant. Casual.",
+        "link": "https://www.yabu-soba.net/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7102,139.7974"
+    },
+    {
+        "name": "Ginza Six",
+        "type": "shopping",
+        "lat": 35.6698,
+        "lng": 139.7645,
+        "notes": "Luxury shopping complex with a rooftop garden.",
+        "link": "https://ginza6.tokyo.e.abf.hp.transer.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6698,139.7645"
+    },
+    {
+        "name": "Kabuki-za Theatre",
+        "type": "general",
+        "lat": 35.6695,
+        "lng": 139.7633,
+        "notes": "Traditional kabuki theater offering daily performances.",
+        "link": "https://www.kabukiweb.net/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6695,139.7633"
+    },
+    {
+        "name": "Mitsukoshi",
+        "type": "shopping",
+        "lat": 35.6716,
+        "lng": 139.7647,
+        "notes": "One of Japan’s oldest and most prestigious department stores.",
+        "link": "https://www.mitsukoshi.mistore.jp.e.abf.hp.transer.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6716,139.7647"
+    },
+    {
+        "name": "Sukiyabashi Jiro",
+        "type": "restaurant",
+        "lat": 35.6732,
+        "lng": 139.7634,
+        "notes": "Legendary Michelin-starred sushi restaurant. Expensive.",
+        "link": "https://www.sushi-jiro.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6732,139.7634"
+    },
+    {
+        "name": "Ginza Kojyu",
+        "type": "restaurant",
+        "lat": 35.6704,
+        "lng": 139.7626,
+        "notes": "Renowned for its kaiseki (traditional multi-course meal). Expensive.",
+        "link": "https://ginza-koju.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6704,139.7626"
+    },
+    {
+        "name": "Ginza Kagari",
+        "type": "restaurant",
+        "lat": 35.6723,
+        "lng": 139.7638,
+        "notes": "Famous for its creamy chicken paitan ramen. Budget.",
+        "link": "https://ginza-kagari.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6723,139.7638"
+    },
+    {
+        "name": "Tendon Tenya",
+        "type": "restaurant",
+        "lat": 35.6734,
+        "lng": 139.7623,
+        "notes": "Affordable tempura bowls. Budget.",
+        "link": "https://www.tenya.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6734,139.7623"
+    },
+    {
+        "name": "Ginza Sembikiya",
+        "type": "restaurant",
+        "lat": 35.6704,
+        "lng": 139.7626,
+        "notes": "Luxury fruit parlor offering exquisite desserts. Casual.",
+        "link": "https://ginza-sembikiya.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6704,139.7626"
+    },
+    {
+        "name": "Itamae Sushi",
+        "type": "restaurant",
+        "lat": 35.6730,
+        "lng": 139.7633,
+        "notes": "Reliable and fresh sushi in a relaxed setting. Casual.",
+        "link": "https://itamae-sushi.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6730,139.7633"
+    },
+    {
+        "name": "Akihabara Electric Town",
+        "type": "general",
+        "lat": 35.6983,
+        "lng": 139.7730,
+        "notes": "Hub for electronics, anime, and manga.",
+        "link": "https://www.japan-guide.com/e/e3003.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6983,139.7730"
+    },
+    {
+        "name": "Mandarake",
+        "type": "shopping",
+        "lat": 35.6965,
+        "lng": 139.7723,
+        "notes": "Giant store specializing in manga, anime, and collectibles.",
+        "link": "https://www.mandarake.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6965,139.7723"
+    },
+    {
+        "name": "Yodobashi Camera",
+        "type": "shopping",
+        "lat": 35.6990,
+        "lng": 139.7743,
+        "notes": "Massive electronics store with everything tech-related.",
+        "link": "https://www.yodobashi.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6990,139.7743"
+    },
+    {
+        "name": "Ninja Akasaka",
+        "type": "restaurant",
+        "lat": 35.6781,
+        "lng": 139.7353,
+        "notes": "Ninja-themed restaurant with elaborate dishes and performances. Expensive.",
+        "link": "https://www.ninjaakasaka.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6781,139.7353"
+    },
+    {
+        "name": "Teppan Baby Akihabara",
+        "type": "restaurant",
+        "lat": 35.7000,
+        "lng": 139.7735,
+        "notes": "Upscale teppanyaki dining. Expensive.",
+        "link": "https://www.teppanbaby.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7000,139.7735"
+    },
+    {
+        "name": "Coco Ichibanya",
+        "type": "restaurant",
+        "lat": 35.6980,
+        "lng": 139.7740,
+        "notes": "Popular curry chain with customizable spice levels. Budget.",
+        "link": "https://www.ichibanya.co.jp/english/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6980,139.7740"
+    },
+    {
+        "name": "Gundam Café",
+        "type": "restaurant",
+        "lat": 35.6985,
+        "lng": 139.7730,
+        "notes": "Themed café with affordable snacks and drinks. Budget.",
+        "link": "https://www.gundamcafe.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6985,139.7730"
+    },
+    {
+        "name": "Yoshinoya",
+        "type": "restaurant",
+        "lat": 35.6970,
+        "lng": 139.7723,
+        "notes": "Well-known chain for quick and cheap gyudon (beef bowl). Casual.",
+        "link": "https://www.yoshinoya.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6970,139.7723"
+    },
+    {
+        "name": "Akiba Ichi",
+        "type": "restaurant",
+        "lat": 35.6992,
+        "lng": 139.7734,
+        "notes": "A variety of casual eateries within the UDX building. Casual.",
+        "link": "https://akibaichi.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6992,139.7734"
+    },
+    {
+        "name": "Takeshita Street",
+        "type": "general",
+        "lat": 35.6703,
+        "lng": 139.7041,
+        "notes": "Famous for trendy shops and crepe stands.",
+        "link": "https://www.japan.travel/en/spot/209/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6703,139.7041"
+    },
+    {
+        "name": "Omotesando",
+        "type": "general",
+        "lat": 35.6656,
+        "lng": 139.7123,
+        "notes": "Tree-lined avenue known for its upscale boutiques and cafes.",
+        "link": "https://www.japan-guide.com/e/e3003.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6656,139.7123"
+    },
+    {
+        "name": "Ukai Tei Omotesando",
+        "type": "restaurant",
+        "lat": 35.6658,
+        "lng": 139.7060,
+        "notes": "Exquisite teppanyaki in an elegant setting. Expensive.",
+        "link": "https://www.ukai.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6658,139.7060"
+    },
+    {
+        "name": "Narisawa",
+        "type": "restaurant",
+        "lat": 35.6654,
+        "lng": 139.7172,
+        "notes": "Michelin-starred restaurant offering innovative cuisine. Expensive.",
+        "link": "https://www.narisawa-yoshihiro.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6654,139.7172"
+    },
+    {
+        "name": "Marion Crepes",
+        "type": "restaurant",
+        "lat": 35.6703,
+        "lng": 139.7041,
+        "notes": "Popular for sweet and savory crepes. Budget.",
+        "link": "https://www.marion.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6703,139.7041"
+    },
+    {
+        "name": "Luke's Lobster",
+        "type": "restaurant",
+        "lat": 35.6647,
+        "lng": 139.7073,
+        "notes": "Famous for its lobster rolls. Budget.",
+        "link": "https://lukeslobster.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6647,139.7073"
+    },
+    {
+        "name": "Kawaii Monster Café",
+        "type": "restaurant",
+        "lat": 35.6671,
+        "lng": 139.7048,
+        "notes": "Whimsical themed café with colorful dishes. Casual.",
+        "link": "https://kawaiimonster.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6671,139.7048"
+    },
+    {
+        "name": "Afuri",
+        "type": "restaurant",
+        "lat": 35.6698,
+        "lng": 139.7038,
+        "notes": "Well-known for its yuzu (citrus) ramen. Casual.",
+        "link": "https://afuri.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6698,139.7038"
+    },
+    {
+        "name": "Roppongi Hills",
+        "type": "general",
+        "lat": 35.6604,
+        "lng": 139.7292,
+        "notes": "Complex with shops, restaurants, and the Mori Art Museum.",
+        "link": "https://www.roppongihills.com/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6604,139.7292"
+    },
+    {
+        "name": "Mori Art Museum",
+        "type": "museum",
+        "lat": 35.6604,
+        "lng": 139.7292,
+        "notes": "Contemporary art museum with stunning city views.",
+        "link": "https://www.mori.art.museum/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6604,139.7292"
+    },
+    {
+        "name": "Tokyo Midtown",
+        "type": "general",
+        "lat": 35.6654,
+        "lng": 139.7303,
+        "notes": "Another large complex with shops, dining, and art spaces.",
+        "link": "https://www.tokyo-midtown.com/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6654,139.7303"
+    },
+    {
+        "name": "L'Atelier de Joël Robuchon",
+        "type": "restaurant",
+        "lat": 35.6615,
+        "lng": 139.7294,
+        "notes": "High-end French cuisine. Expensive.",
+        "link": "https://www.robuchon.jp/latelier-roppongi",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6615,139.7294"
+    },
+    {
+        "name": "Sukiyabashi Jiro Roppongi",
+        "type": "restaurant",
+        "lat": 35.6601,
+        "lng": 139.7290,
+        "notes": "Another branch of the famous sushi restaurant. Expensive.",
+        "link": "https://www.sushi-jiro.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6601,139.7290"
+    },
+    {
+        "name": "Ichiran Ramen Roppongi",
+        "type": "restaurant",
+        "lat": 35.6626,
+        "lng": 139.7292,
+        "notes": "Consistently good and affordable ramen. Budget.",
+        "link": "https://ichiran.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6626,139.7292"
+    },
+    {
+        "name": "Sushizanmai Roppongi",
+        "type": "restaurant",
+        "lat": 35.6622,
+        "lng": 139.7303,
+        "notes": "Reliable sushi at a reasonable price. Budget.",
+        "link": "https://www.kiyomura.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6622,139.7303"
+    },
+    {
+        "name": "Gonpachi",
+        "type": "restaurant",
+        "lat": 35.6611,
+        "lng": 139.7290,
+        "notes": "Known as the “Kill Bill” restaurant, offering a variety of Japanese dishes. Casual.",
+        "link": "https://gonpachi.jp/nishi/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6611,139.7290"
+    },
+    {
+        "name": "Butagumi",
+        "type": "restaurant",
+        "lat": 35.6637,
+        "lng": 139.7294,
+        "notes": "Famous for its tonkatsu (breaded pork cutlet). Casual.",
+        "link": "https://www.butagumi.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6637,139.7294"
+    },
+    {
+        "name": "Ueno Park",
+        "type": "general",
+        "lat": 35.7128,
+        "lng": 139.7745,
+        "notes": "Large public park with museums and a zoo.",
+        "link": "https://www.japan-guide.com/e/e3019.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7128,139.7745"
+    },
+    {
+        "name": "Tokyo National Museum",
+        "type": "museum",
+        "lat": 35.7188,
+        "lng": 139.7745,
+        "notes": "Japan’s oldest and largest museum.",
+        "link": "https://www.tnm.jp/?lang=en",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7188,139.7745"
+    },
+    {
+        "name": "Ameyoko Market",
+        "type": "shopping",
+        "lat": 35.7090,
+        "lng": 139.7741,
+        "notes": "Bustling market street with shops and food stalls.",
+        "link": "https://www.japan-guide.com/e/e3012.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7090,139.7741"
+    },
+    {
+        "name": "Innsyoutei",
+        "type": "restaurant",
+        "lat": 35.7138,
+        "lng": 139.7745,
+        "notes": "Traditional Japanese restaurant in Ueno Park. Expensive.",
+        "link": "https://www.innsyoutei.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7138,139.7745"
+    },
+    {
+        "name": "Izu-ei",
+        "type": "restaurant",
+        "lat": 35.7150,
+        "lng": 139.7737,
+        "notes": "Specializes in unagi (grilled eel). Expensive.",
+        "link": "https://www.izuei.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7150,139.7737"
+    },
+    {
+        "name": "Ueno Yabu Soba",
+        "type": "restaurant",
+        "lat": 35.7135,
+        "lng": 139.7744,
+        "notes": "Affordable soba noodle restaurant. Budget.",
+        "link": "https://www.yabusoba.net/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7135,139.7744"
+    },
+    {
+        "name": "Tonkatsu Yamabe",
+        "type": "restaurant",
+        "lat": 35.7136,
+        "lng": 139.7742,
+        "notes": "Known for its cheap and delicious tonkatsu. Budget.",
+        "link": "https://www.yamabe.info/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7136,139.7742"
+    },
+    {
+        "name": "Suke6 Diner",
+        "type": "restaurant",
+        "lat": 35.7100,
+        "lng": 139.7742,
+        "notes": "American-style diner with hearty breakfast and lunch options. Casual.",
+        "link": "https://suke6diner.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7100,139.7742"
+    },
+    {
+        "name": "Hard Rock Café",
+        "type": "restaurant",
+        "lat": 35.7100,
+        "lng": 139.7740,
+        "notes": "International chain offering casual American fare. Casual.",
+        "link": "https://www.hardrockcafe.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.7100,139.7740"
+    },
+    {
+        "name": "teamLab Borderless",
+        "type": "museum",
+        "lat": 35.6272,
+        "lng": 139.7766,
+        "notes": "Interactive digital art museum.",
+        "link": "https://borderless.teamlab.art/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6272,139.7766"
+    },
+    {
+        "name": "DiverCity Tokyo Plaza",
+        "type": "shopping",
+        "lat": 35.6265,
+        "lng": 139.7765,
+        "notes": "Shopping center with a giant Gundam statue.",
+        "link": "https://www.divercity-tokyo.com/en/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6265,139.7765"
+    },
+    {
+        "name": "Odaiba Seaside Park",
+        "type": "general",
+        "lat": 35.6266,
+        "lng": 139.7762,
+        "notes": "Man-made beach with views of Rainbow Bridge.",
+        "link": "https://www.tokyo-park.or.jp/park/format/index026.html",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6266,139.7762"
+    },
+    {
+        "name": "Hibiki",
+        "type": "restaurant",
+        "lat": 35.6263,
+        "lng": 139.7766,
+        "notes": "Offers traditional Japanese cuisine with stunning bay views. Expensive.",
+        "link": "https://www.hibiki.co.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6263,139.7766"
+    },
+    {
+        "name": "The Grill on 30th",
+        "type": "restaurant",
+        "lat": 35.6265,
+        "lng": 139.7765,
+        "notes": "Upscale dining with panoramic views from the Grand Nikko Tokyo. Expensive.",
+        "link": "https://www.tokyo.grandnikko.com/restaurant/grill30th/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6265,139.7765"
+    },
+    {
+        "name": "Aqua City Odaiba Food Court",
+        "type": "restaurant",
+        "lat": 35.6266,
+        "lng": 139.7770,
+        "notes": "Variety of affordable dining options. Budget.",
+        "link": "https://www.aquacity.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6266,139.7770"
+    },
+    {
+        "name": "Eggs 'n Things",
+        "type": "restaurant",
+        "lat": 35.6265,
+        "lng": 139.7770,
+        "notes": "Hawaiian-style pancakes and breakfast dishes. Budget.",
+        "link": "https://www.eggsnthingsjapan.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6265,139.7770"
+    },
+    {
+        "name": "Bills Odaiba",
+        "type": "restaurant",
+        "lat": 35.6266,
+        "lng": 139.7770,
+        "notes": "Known for its luxurious brunch options. Casual.",
+        "link": "https://bills-jp.net/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6266,139.7770"
+    },
+    {
+        "name": "Kua 'Aina",
+        "type": "restaurant",
+        "lat": 35.6266,
+        "lng": 139.7770,
+        "notes": "Hawaiian burger restaurant. Casual.",
+        "link": "https://www.kua-aina.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6266,139.7770"
+    },
+    {
+        "name": "Yebisu Garden Place",
+        "type": "general",
+        "lat": 35.6401,
+        "lng": 139.7172,
+        "notes": "Complex with shops, restaurants, and the Yebisu Beer Museum.",
+        "link": "https://gardenplace.jp/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6401,139.7172"
+    },
+    {
+        "name": "Tokyo Photographic Art Museum",
+        "type": "museum",
+        "lat": 35.6404,
+        "lng": 139.7156,
+        "notes": "Exhibits on photography and visual culture.",
+        "link": "https://topmuseum.jp/e/contents/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6404,139.7156"
+    },
+    {
+        "name": "Joel Robuchon Restaurant",
+        "type": "restaurant",
+        "lat": 35.6411,
+        "lng": 139.7162,
+        "notes": "High-end French dining in a lavish setting. Expensive.",
+        "link": "https://www.robuchon.jp/joelrobuchon",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6411,139.7162"
+    },
+    {
+        "name": "Ryugin",
+        "type": "restaurant",
+        "lat": 35.6411,
+        "lng": 139.7162,
+        "notes": "Renowned kaiseki restaurant. Expensive.",
+        "link": "https://www.nihonryori-ryugin.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6411,139.7162"
+    },
+    {
+        "name": "Afuri Ebisu",
+        "type": "restaurant",
+        "lat": 35.6401,
+        "lng": 139.7156,
+        "notes": "Famous for its yuzu shio ramen. Budget.",
+        "link": "https://afuri.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6401,139.7156"
+    },
+    {
+        "name": "Hanamaru Udon",
+        "type": "restaurant",
+        "lat": 35.6401,
+        "lng": 139.7156,
+        "notes": "Affordable and tasty udon noodle dishes. Budget.",
+        "link": "https://www.hanamaruudon.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6401,139.7156"
+    },
+    {
+        "name": "Blacows",
+        "type": "restaurant",
+        "lat": 35.6391,
+        "lng": 139.7170,
+        "notes": "Gourmet burger joint. Casual.",
+        "link": "https://www.blacows.net/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6391,139.7170"
+    },
+        {
         "name": "Pokemon Center Tokyo DX",
         "type": "shopping",
         "lat": 35.6784,
@@ -108,12 +1067,12 @@
         "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6895,139.6917"
     },
     {
-        "name": "TeamLab Borderless",
-        "type": "museum",
-        "lat": 35.6272,
-        "lng": 139.7766,
-        "notes": "A digital art museum located in Odaiba, Tokyo.",
-        "link": "https://borderless.teamlab.art/",
-        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6272,139.7766"
+        "name": "Ebisu Yokocho",
+        "type": "restaurant",
+        "lat": 35.6410,
+        "lng": 139.7171,
+        "notes": "Alleyway with various casual izakayas. Casual.",
+        "link": "https://www.ebisu-yokocho.com/",
+        "googleMapsLink": "https://www.google.com/maps/search/?api=1&query=35.6410,139.7171"
     }
 ]
