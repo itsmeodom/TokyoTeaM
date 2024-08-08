@@ -38,6 +38,26 @@
                 margin-top: 20px;
             }
         }
+        .autocomplete-suggestions {
+            border: 1px solid #d4d4d4;
+            border-top: none;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            background-color: white;
+            z-index: 1000;
+        }
+        .autocomplete-suggestion {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .autocomplete-suggestion:hover {
+            background-color: #e9e9e9;
+        }
+        .btn-teal {
+            background-color: teal;
+            color: white;
+        }
     </style>
 </head>
 <body class="container">
@@ -55,8 +75,9 @@
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
                 <div class="controls row">
-                    <div class="col-md-6 mb-3">
-                        <input type="text" id="search" class="form-control" placeholder="Search points of interest or places">
+                    <div class="col-md-6 mb-3 position-relative">
+                        <input type="text" id="search" class="form-control" placeholder="Search points of interest or places" onkeyup="autocompleteSearch()">
+                        <div id="autocomplete-list" class="autocomplete-suggestions"></div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <select id="filter" class="form-control">
@@ -71,20 +92,11 @@
                             <option value="entertainment">Entertainment</option>
                         </select>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <button onclick="zoomToCurrentLocation()" class="btn btn-secondary btn-block">Zoom to Current Location</button>
+                    <div class="col-md-6 mb-3">
+                        <button onclick="zoomToCurrentLocation()" class="btn btn-teal btn-block">Zoom to Current Location</button>
                     </div>
-                    <div class="col-md-4 mb-3">
-                        <button onclick="returnToHome()" class="btn btn-info btn-block">Return to Home</button>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <button onclick="maximizeMap()" class="btn btn-success btn-block">Maximize Map</button>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <button onclick="maximizeList()" class="btn btn-warning btn-block">Maximize List</button>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <button onclick="resetLayout()" class="btn btn-primary btn-block">Reset Layout</button>
+                    <div class="col-md-6 mb-3">
+                        <button onclick="returnToHome()" class="btn btn-teal btn-block">Return to Home</button>
                     </div>
                 </div>
             </div>
@@ -102,6 +114,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     let map;
+    let pois = [];
     const homeCoords = [35.681160, 139.758157]; // Home coordinates
     const homeZoom = 13; // Home zoom level
 
@@ -132,26 +145,6 @@
         });
     }
 
-    function maximizeMap() {
-        document.getElementById('map').classList.add('fullscreen-map');
-        document.getElementById('poi-list').classList.remove('fullscreen-list');
-        map.invalidateSize(); // Resize the map to fit its container
-    }
-
-    function maximizeList() {
-        document.getElementById('poi-list').classList.add('fullscreen-list');
-        document.getElementById('map').classList.remove('fullscreen-map');
-        map.invalidateSize(); // Resize the map to fit its container
-    }
-
-    function resetLayout() {
-        document.getElementById('map').classList.remove('fullscreen-map');
-        document.getElementById('poi-list').classList.remove('fullscreen-list');
-        document.getElementById('map').style.flex = '0 0 66.66%';
-        document.getElementById('poi-list').style.flex = '0 0 33.33%';
-        map.invalidateSize(); // Resize the map to fit its container
-    }
-
     function zoomToCurrentLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
@@ -169,32 +162,26 @@
         map.setView(homeCoords, homeZoom);
     }
 
-    function searchAndPan(query) {
-        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${query}&limit=1`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.length > 0) {
-                    const result = data[0];
-                    const lat = result.lat;
-                    const lon = result.lon;
-                    map.setView([lat, lon], 13);
-                    L.marker([lat, lon]).addTo(map)
-                        .bindPopup(`<b>${result.display_name}</b><br><a href="https://www.google.com/maps/search/?api=1&query=${lat},${lon}" target="_blank">Open in Google Maps</a>`)
-                        .openPopup();
-                } else {
-                    alert('Location not found');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-    }
+    function autocompleteSearch() {
+        const input = document.getElementById('search').value.toLowerCase();
+        const autocompleteList = document.getElementById('autocomplete-list');
+        autocompleteList.innerHTML = '';
 
-    document.getElementById('search').addEventListener('keyup', (event) => {
-        if (event.key === 'Enter') {
-            searchAndPan(event.target.value);
-        }
-    });
+        if (!input) return;
+
+        const suggestions = pois.filter(poi => poi.name.toLowerCase().includes(input));
+        suggestions.forEach(suggestion => {
+            const div = document.createElement('div');
+            div.className = 'autocomplete-suggestion';
+            div.innerHTML = suggestion.name;
+            div.onclick = () => {
+                map.setView([suggestion.lat, suggestion.lng], 13);
+                autocompleteList.innerHTML = '';
+                document.getElementById('search').value = suggestion.name;
+            };
+            autocompleteList.appendChild(div);
+        });
+    }
 
     // Load configuration and initialize the map
     fetch('config.json')
@@ -217,7 +204,7 @@
                             maxZoom: basemap.maxZoom
                         });
                         baseMaps[basemap.name] = layer;
-                        if (basemap.name === "Jawg Streets") {
+                        if (basemap.name === "Jawg Terrain") {
                             layer.addTo(map); // Add default basemap
                         }
                     });
@@ -227,7 +214,8 @@
             // Fetch POIs from external JSON file
             fetch('pois.json')
                 .then(response => response.json())
-                .then(pois => {
+                .then(data => {
+                    pois = data; // Store POIs for use in autocomplete
                     // Add markers to the map
                     const markers = [];
                     pois.forEach(poi => {
@@ -242,60 +230,3 @@
                         marker.addTo(map);
                     });
 
-                    // Display POIs as a list
-                    const poiList = document.getElementById('poi-list');
-                    pois.forEach(poi => {
-                        const listItem = document.createElement('li');
-                        listItem.className = 'poi-item list-group-item';
-                        listItem.innerHTML = `
-                            <b>${poi.name}</b><br>
-                            ${poi.notes}<br>
-                            <a href="${poi.link}" target="_blank">More info</a><br>
-                            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
-                        `;
-                        poiList.appendChild(listItem);
-                    });
-
-                    // Filter POIs
-                    document.getElementById('filter').addEventListener('change', () => updateMapAndList(pois, markers));
-                    document.getElementById('search').addEventListener('input', () => updateMapAndList(pois, markers));
-                    map.on('moveend', () => updateMapAndList(pois, markers));
-
-                    // Initial update
-                    updateMapAndList(pois, markers);
-                });
-
-            // Update POI list and markers based on filter, search, and map bounds
-            function updateMapAndList(pois, markers) {
-                const filterValue = document.getElementById('filter').value;
-                const searchValue = document.getElementById('search').value.toLowerCase();
-                const bounds = map.getBounds();
-                const poiList = document.getElementById('poi-list');
-                poiList.innerHTML = '';
-
-                markers.forEach(marker => marker.remove());
-
-                pois.forEach((poi, index) => {
-                    const isInBounds = bounds.contains([poi.lat, poi.lng]);
-                    const matchesFilter = filterValue === 'all' || poi.type === filterValue;
-                    const matchesSearch = poi.name.toLowerCase().includes(searchValue);
-
-                    if (isInBounds && matchesFilter && matchesSearch) {
-                        markers[index].addTo(map);
-                        const listItem = document.createElement('li');
-                        listItem.className = 'poi-item list-group-item';
-                        listItem.innerHTML = `
-                            <b>${poi.name}</b><br>
-                            ${poi.notes}<br>
-                            <a href="${poi.link}" target="_blank">More info</a><br>
-                            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
-                        `;
-                        poiList.appendChild(listItem);
-                    }
-                });
-            }
-        });
-</script>
-
-</body>
-</html>
