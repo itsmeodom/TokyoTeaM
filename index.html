@@ -230,3 +230,60 @@
                         marker.addTo(map);
                     });
 
+                    // Display POIs as a list
+                    const poiList = document.getElementById('poi-list');
+                    pois.forEach(poi => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'poi-item list-group-item';
+                        listItem.innerHTML = `
+                            <b>${poi.name}</b><br>
+                            ${poi.notes}<br>
+                            <a href="${poi.link}" target="_blank">More info</a><br>
+                            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
+                        `;
+                        poiList.appendChild(listItem);
+                    });
+
+                    // Filter POIs
+                    document.getElementById('filter').addEventListener('change', () => updateMapAndList(pois, markers));
+                    document.getElementById('search').addEventListener('input', () => updateMapAndList(pois, markers));
+                    map.on('moveend', () => updateMapAndList(pois, markers));
+
+                    // Initial update
+                    updateMapAndList(pois, markers);
+                });
+
+            // Update POI list and markers based on filter, search, and map bounds
+            function updateMapAndList(pois, markers) {
+                const filterValue = document.getElementById('filter').value;
+                const searchValue = document.getElementById('search').value.toLowerCase();
+                const bounds = map.getBounds();
+                const poiList = document.getElementById('poi-list');
+                poiList.innerHTML = '';
+
+                markers.forEach(marker => marker.remove());
+
+                pois.forEach((poi, index) => {
+                    const isInBounds = bounds.contains([poi.lat, poi.lng]);
+                    const matchesFilter = filterValue === 'all' || poi.type === filterValue;
+                    const matchesSearch = poi.name.toLowerCase().includes(searchValue);
+
+                    if (isInBounds && matchesFilter && matchesSearch) {
+                        markers[index].addTo(map);
+                        const listItem = document.createElement('li');
+                        listItem.className = 'poi-item list-group-item';
+                        listItem.innerHTML = `
+                            <b>${poi.name}</b><br>
+                            ${poi.notes}<br>
+                            <a href="${poi.link}" target="_blank">More info</a><br>
+                            <a href="${poi.googleMapsLink}" target="_blank">Open in Google Maps</a>
+                        `;
+                        poiList.appendChild(listItem);
+                    }
+                });
+            }
+        });
+</script>
+
+</body>
+</html>
