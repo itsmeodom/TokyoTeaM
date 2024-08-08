@@ -62,6 +62,20 @@
             popupAnchor: [0, -32]
         });
     }
+                // Zoom to current location
+            function zoomToCurrentLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(position => {
+                        const { latitude, longitude } = position.coords;
+                        map.setView([latitude, longitude], 13);
+                    }, () => {
+                        alert('Geolocation is not supported by this browser.');
+                    });
+                } else {
+                    alert('Geolocation is not supported by this browser.');
+                }
+            }
+
 
     // Load configuration and initialize the map
     fetch('config.json')
@@ -109,19 +123,6 @@
                 document.getElementById('poi-list').style.display = mapView ? 'none' : 'block';
             }
 
-            // Zoom to current location
-            function zoomToCurrentLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(position => {
-                        const { latitude, longitude } = position.coords;
-                        map.setView([latitude, longitude], 13);
-                    }, () => {
-                        alert('Geolocation is not supported by this browser.');
-                    });
-                } else {
-                    alert('Geolocation is not supported by this browser.');
-                }
-            }
 
 
             // Function to create colored markers
