@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Points of Interest</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         #map {
             height: 500px;
@@ -24,32 +25,47 @@
         }
     </style>
 </head>
-<body>
+<body class="container">
 
-<div class="controls">
-    <input type="text" id="search" placeholder="Search points of interest">
-    <select id="filter">
-        <option value="all">All</option>
-        <option value="restaurant">Restaurants</option>
-        <option value="museum">Museums</option>
-        <option value="park">Parks</option>
-        <option value="hotel">Hotels</option>
-        <option value="general">General</option>
-        <option value="shopping">Shopping</option>
-        <option value="market">Markets</option>
-        <option value="entertainment">Entertainment</option>
-    </select>
-    <button onclick="toggleView()">Toggle List/Map View</button>
-    <button onclick="zoomToCurrentLocation()">Zoom to Current Location</button>
+<div class="controls row">
+    <div class="col-md-6 mb-3">
+        <input type="text" id="search" class="form-control" placeholder="Search points of interest">
+    </div>
+    <div class="col-md-6 mb-3">
+        <select id="filter" class="form-control">
+            <option value="all">All</option>
+            <option value="restaurant">Restaurants</option>
+            <option value="museum">Museums</option>
+            <option value="park">Parks</option>
+            <option value="hotel">Hotels</option>
+            <option value="general">General</option>
+            <option value="shopping">Shopping</option>
+            <option value="market">Markets</option>
+            <option value="entertainment">Entertainment</option>
+        </select>
+    </div>
+    <div class="col-md-4 mb-3">
+        <button onclick="toggleView()" class="btn btn-primary btn-block">Toggle List/Map View</button>
+    </div>
+    <div class="col-md-4 mb-3">
+        <button onclick="zoomToCurrentLocation()" class="btn btn-secondary btn-block">Zoom to Current Location</button>
+    </div>
+    <div class="col-md-4 mb-3">
+        <button onclick="returnToHome()" class="btn btn-info btn-block">Return to Home</button>
+    </div>
 </div>
 
-<div id="map"></div>
-<ul id="poi-list" style="display: none;"></ul>
+<div id="map" class="mb-4"></div>
+<ul id="poi-list" class="list-group" style="display: none;"></ul>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     let map;
     let mapView = true; // Start with map view
+    const homeCoords = [35.6762, 139.6503]; // Home coordinates
+    const homeZoom = 13; // Home zoom level
 
     // Define colors for different POI types
     const colors = {
@@ -98,6 +114,10 @@
         }
     }
 
+    function returnToHome() {
+        map.setView(homeCoords, homeZoom);
+    }
+
     // Load configuration and initialize the map
     fetch('config.json')
         .then(response => response.json())
@@ -105,7 +125,7 @@
             const accessToken = config.accessToken;
 
             // Initialize the map
-            map = L.map('map').setView([35.6762, 139.6503], 13); // Centered on Tokyo, Japan
+            map = L.map('map').setView(homeCoords, homeZoom); // Centered on Tokyo, Japan
 
             // Fetch and add basemaps from external JSON file
             fetch('basemaps.json')
@@ -148,7 +168,7 @@
                     const poiList = document.getElementById('poi-list');
                     pois.forEach(poi => {
                         const listItem = document.createElement('li');
-                        listItem.className = 'poi-item';
+                        listItem.className = 'poi-item list-group-item';
                         listItem.innerHTML = `
                             <b>${poi.name}</b><br>
                             ${poi.notes}<br>
@@ -185,7 +205,7 @@
                     if (isInBounds && matchesFilter && matchesSearch) {
                         markers[index].addTo(map);
                         const listItem = document.createElement('li');
-                        listItem.className = 'poi-item';
+                        listItem.className = 'poi-item list-group-item';
                         listItem.innerHTML = `
                             <b>${poi.name}</b><br>
                             ${poi.notes}<br>
