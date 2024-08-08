@@ -14,64 +14,91 @@
             gap: 10px;
         }
         #map, #poi-list {
-            flex: 1;
             transition: all 0.3s ease;
         }
-        .fullscreen-map {
-            flex: 0 0 100%;
+        #map {
+            flex: 0 0 70%;
         }
-        .fullscreen-list {
-            flex: 0 0 100%;
+        #poi-list {
+            flex: 0 0 30%;
+            overflow-y: auto;
+        }
+        .hidden {
+            display: none;
+        }
+        .poi-item {
+            margin: 10px 0;
         }
         @media (max-width: 768px) {
             #container {
                 flex-direction: column;
             }
-        }
-        .poi-item {
-            margin: 10px 0;
+            #map {
+                flex: 1;
+                order: 1;
+            }
+            #poi-list {
+                flex: 1;
+                order: 2;
+            }
+            .accordion {
+                margin-top: 20px;
+            }
         }
     </style>
 </head>
 <body class="container">
 
-<div class="controls row">
-    <div class="col-md-6 mb-3">
-        <input type="text" id="search" class="form-control" placeholder="Search points of interest or places">
-    </div>
-    <div class="col-md-6 mb-3">
-        <select id="filter" class="form-control">
-            <option value="all">All</option>
-            <option value="restaurant">Restaurants</option>
-            <option value="museum">Museums</option>
-            <option value="park">Parks</option>
-            <option value="hotel">Hotels</option>
-            <option value="general">General</option>
-            <option value="shopping">Shopping</option>
-            <option value="market">Markets</option>
-            <option value="entertainment">Entertainment</option>
-        </select>
-    </div>
-    <div class="col-md-4 mb-3">
-        <button onclick="toggleSize()" class="btn btn-primary btn-block">Toggle Map/List Size</button>
-    </div>
-    <div class="col-md-4 mb-3">
-        <button onclick="zoomToCurrentLocation()" class="btn btn-secondary btn-block">Zoom to Current Location</button>
-    </div>
-    <div class="col-md-4 mb-3">
-        <button onclick="returnToHome()" class="btn btn-info btn-block">Return to Home</button>
-    </div>
-    <div class="col-md-4 mb-3">
-        <button onclick="maximizeMap()" class="btn btn-success btn-block">Maximize Map</button>
-    </div>
-    <div class="col-md-4 mb-3">
-        <button onclick="maximizeList()" class="btn btn-warning btn-block">Maximize List</button>
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Controls
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div class="controls row">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" id="search" class="form-control" placeholder="Search points of interest or places">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <select id="filter" class="form-control">
+                            <option value="all">All</option>
+                            <option value="restaurant">Restaurants</option>
+                            <option value="museum">Museums</option>
+                            <option value="park">Parks</option>
+                            <option value="hotel">Hotels</option>
+                            <option value="general">General</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="market">Markets</option>
+                            <option value="entertainment">Entertainment</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <button onclick="showMap()" class="btn btn-primary btn-block">Show Map</button>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <button onclick="showList()" class="btn btn-primary btn-block">Show List</button>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <button onclick="zoomToCurrentLocation()" class="btn btn-secondary btn-block">Zoom to Current Location</button>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <button onclick="returnToHome()" class="btn btn-info btn-block">Return to Home</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <div id="container">
     <div id="map"></div>
-    <ul id="poi-list" class="list-group"></ul>
+    <ul id="poi-list" class="list-group hidden"></ul>
 </div>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -109,26 +136,15 @@
         });
     }
 
-    function toggleSize() {
-        const container = document.getElementById('container');
-        if (container.style.flexDirection === 'row') {
-            container.style.flexDirection = 'column';
-        } else {
-            container.style.flexDirection = 'row';
-        }
+    function showMap() {
+        document.getElementById('map').classList.remove('hidden');
+        document.getElementById('poi-list').classList.add('hidden');
         map.invalidateSize(); // Resize the map to fit its container
     }
 
-    function maximizeMap() {
-        document.getElementById('map').classList.add('fullscreen-map');
-        document.getElementById('poi-list').classList.remove('fullscreen-list');
-        map.invalidateSize(); // Resize the map to fit its container
-    }
-
-    function maximizeList() {
-        document.getElementById('poi-list').classList.add('fullscreen-list');
-        document.getElementById('map').classList.remove('fullscreen-map');
-        map.invalidateSize(); // Resize the map to fit its container
+    function showList() {
+        document.getElementById('map').classList.add('hidden');
+        document.getElementById('poi-list').classList.remove('hidden');
     }
 
     function zoomToCurrentLocation() {
